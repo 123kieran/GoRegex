@@ -41,6 +41,36 @@ func elizaResponse(userInput string) string {
 		response = "input :" + input + " \noutput : How do you know you are " + matched
 		return response
 	}
+
+	re = regexp.MustCompile("(?:I should(.*))")
+	if re.MatchString(input) {
+		//capture subtring array of input after a match is found
+		matched := re.FindStringSubmatch(input)[1]
+		//pass matched string array to matchPronouns to reflect pronouns
+		matched = matchPronouns(matched)
+		response = "User :" + input + " \nEliza : Why do you think you should " + matched + " ? "
+		return response
+	}
+	re = regexp.MustCompile("(?:Do you like(.*))")
+	if re.MatchString(input) {
+		//capture subtring array of input after a match is found
+		matched := re.FindStringSubmatch(input)[1]
+		//pass matched string array to matchPronouns to reflect pronouns
+		matched = matchPronouns(matched)
+		response = "User :" + input + " \nEliza : No i hate " + matched + " and have no time for it? "
+		return response
+	}
+
+	re = regexp.MustCompile("(?:I'm worried about (.*))")
+	if re.MatchString(input) {
+		//capture subtring array of input after a match is found
+		matched := re.FindStringSubmatch(input)[1]
+		//pass matched string array to matchPronouns to reflect pronouns
+		matched = matchPronouns(matched)
+		response = "User :" + input + " \nEliza : Why are you worried about " + matched + " ? "
+		return response
+	}
+
 	return response
 } //elizaResponse
 
@@ -86,6 +116,9 @@ func main() {
 		"I am not happy with your responses.",
 		"I am not sure that you understand the effect that your questions are having on me.",
 		"I am supposed to just take what you’re saying at face value?",
+		"I should do some study ",
+		"Do you like football ",
+		"I'm worried about Global Warming ",
 	}
 
 	rand.Seed(time.Now().UTC().UnixNano())
