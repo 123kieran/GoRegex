@@ -25,7 +25,7 @@ eg. > cd GoRegex
 **2. Compile**
 
 ```bash
-> go build ElizaResponses.go
+> go build ElizaResponse.go
 ```
 
 **3. Run the Chatbot**
@@ -33,4 +33,4 @@ eg. > cd GoRegex
 ```bash
 To run enter './' followed by the executable produced
 For Windows:
-> ./ElizaResponses.exe
+> ./ElizaResponse.exe
